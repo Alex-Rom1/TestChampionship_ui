@@ -1,6 +1,5 @@
-import 'dart:ui';
-
-import 'package:matule_ui_kit/themes/palettes.dart';
+import 'package:flutter/material.dart';
+import 'palettes.dart';
 
 class Texts{
   final Palette palette;

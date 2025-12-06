@@ -9,6 +9,7 @@ abstract class Palette{
   abstract Color error;
   abstract Color input_bg;
   abstract Color caption;
+  abstract Color input_stroke;
 }
 
 class MainPalette extends Palette {
@@ -35,4 +36,7 @@ class MainPalette extends Palette {
   
   @override
   Color caption = Color(0xFF939396);
+
+  @override
+  Color input_stroke = Color(0xFFEBEBEB);
 }
