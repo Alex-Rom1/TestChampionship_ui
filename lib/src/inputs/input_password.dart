@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:matule_ui_kit/src/themes/palettes.dart';
 import 'package:matule_ui_kit/src/themes/extensions.dart';
 
-class InputStandart extends StatefulWidget{
+class InputPassword extends StatefulWidget{
   final String hint;
 
-  InputStandart({
+  InputPassword({
     super.key,
     required this.hint,
   });
 
-  State<StatefulWidget> createState() => _InputStandartState();
+  State<StatefulWidget> createState() => _InputPasswordState();
 }
 
-class _InputStandartState extends State<InputStandart>{
+class _InputPasswordState extends State<InputPassword>{
 
   bool _cantSeePass = true;
   final TextEditingController controller = TextEditingController();
