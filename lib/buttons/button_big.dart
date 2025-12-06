@@ -7,6 +7,7 @@ class ButtonBig extends StatelessWidget {
   final VoidCallback onPressed;
 
   ButtonBig({
+    super.key,
     required this.text,
     required this.text_style,
     required this.color_bg,
