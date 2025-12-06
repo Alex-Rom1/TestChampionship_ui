@@ -59,4 +59,13 @@ class Texts{
     fontWeight: FontWeight.w400,
     color: palette.caption,
   );
+
+  TextStyle get headline_regular => TextStyle(
+    fontFamily: 'SF Pro Display',
+    fontSize: 16,
+    height: 20,
+    letterSpacing: -0.32,
+    fontWeight: FontWeight.w400,
+    color: palette.black,
+  );
 }

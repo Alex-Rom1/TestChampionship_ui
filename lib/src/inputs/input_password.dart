@@ -8,13 +8,14 @@ class InputStandart extends StatefulWidget{
   InputStandart({
     super.key,
     required this.hint,
-});
+  });
 
   State<StatefulWidget> createState() => _InputStandartState();
 }
 
 class _InputStandartState extends State<InputStandart>{
 
+  bool _cantSeePass = true;
   final TextEditingController controller = TextEditingController();
   var _theme = CustomTheme(MainPalette());
 
@@ -34,8 +35,17 @@ class _InputStandartState extends State<InputStandart>{
         fillColor: _theme.palette.input_bg,
         labelText: widget.hint,
         labelStyle: _theme.texts.text_regular_caption,
+        suffixIcon: IconButton(
+          onPressed: (){
+            setState(() {
+              _cantSeePass = !_cantSeePass;
+            });
+          },
+          icon: _cantSeePass ? Icon(Icons.visibility_off_outlined, color: _theme.palette.black,) : Icon(Icons.visibility_outlined, color: _theme.palette.black),
+        ),
       ),
-      style: _theme.texts.text_regular,
+      obscureText: _cantSeePass,
+      style: _theme.texts.headline_regular,
     );
   }
 }
