@@ -8,6 +8,7 @@ abstract class Palette{
   abstract Color white;
   abstract Color error;
   abstract Color input_bg;
+  abstract Color caption;
 }
 
 class MainPalette extends Palette {
@@ -31,4 +32,7 @@ class MainPalette extends Palette {
   
   @override
   Color input_bg = Color(0xFFF5F5F9);
+  
+  @override
+  Color caption = Color(0xFF939396);
 }
