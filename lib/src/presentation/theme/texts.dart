@@ -23,6 +23,14 @@ class Texts {
     height: 20 / 15,
   );
 
+  TextStyle get textMedium15 => TextStyle(
+    color: palette.black,
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0,
+    height: 20 / 15,
+  );
+
   TextStyle get captionSemibold14 => TextStyle(
     color: palette.black,
     fontSize: 14.sp,

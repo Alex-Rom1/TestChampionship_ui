@@ -128,11 +128,36 @@ class SmallButtonWidget extends BaseButtonWidget {
   double get height => 40.h;
 
   @override
-  EdgeInsets get padding => EdgeInsets.symmetric(horizontal: 20.w, vertical: 26.h);
+  EdgeInsets get padding =>
+      EdgeInsets.symmetric(horizontal: 20.w, vertical: 26.h);
 
   @override
   TextStyle get textStyle => theme.texts.captionSemibold14;
 
   @override
   double? get width => 96.w;
+}
+
+class ChipsButtonWidget extends BaseButtonWidget {
+  const ChipsButtonWidget({
+    required super.theme,
+    required super.onTap,
+    required super.backgroundColor,
+    required super.disabledBackgroundColor,
+    required super.strokeColor,
+    required super.textColor,
+    required super.text,
+  });
+
+  @override
+  double get height => 48.h;
+
+  @override
+  EdgeInsets get padding => EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h);
+
+  @override
+  TextStyle get textStyle => theme.texts.textMedium15;
+
+  @override
+  double? get width => null;
 }
