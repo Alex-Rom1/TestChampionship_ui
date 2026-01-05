@@ -254,7 +254,7 @@ class SmallButtonWidget extends BaseButtonWidget {
 
   @override
   EdgeInsets get padding =>
-      EdgeInsets.symmetric(horizontal: 20.w, vertical: 26.h);
+      EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h);
 
   @override
   TextStyle get textStyle => theme.texts.captionSemibold14;
@@ -282,10 +282,34 @@ class SmallButtonWidget extends BaseButtonWidget {
     required super.text,
   }) : super(
     backgroundColor: Colors.transparent,
-    disabledBackgroundColor: null,
+    disabledBackgroundColor: Colors.transparent,
     strokeColor: theme.palette.accent,
     textColor: theme.palette.accent,
     disabledTextColor: theme.palette.accentInactive
+  );
+
+  static Story get story => Story(
+      name: 'Small Button',
+      builder: (BuildContext context){
+        var theme = CustomTheme.of(context);
+        String text = context.knobs.text(label: 'Text', initial: "test");
+        int type = context.knobs.options(label: "Button Type", initial: 0, options: [
+          Option(label: 'Filled', value: 0),
+          Option(label: 'Outline', value: 1)
+        ]);
+        bool active = context.knobs.boolean(label: 'Active', initial: true);
+
+        void onTap (){
+          debugPrint('Small button pressed');
+        }
+
+        switch(type){
+          case 0:
+            return SmallButtonWidget.filled(theme: theme, onTap: active? onTap:null, text: text);
+          case _:
+            return SmallButtonWidget.outline(theme: theme, onTap: active? onTap:null, text: text);
+        }
+      }
   );
 }
 
@@ -326,5 +350,20 @@ class ChipsButtonWidget extends BaseButtonWidget {
     strokeColor: Colors.transparent,
     textColor: theme.palette.white,
     disabledTextColor: theme.palette.description,
+  );
+
+  static Story get story => Story(
+    name: 'Chips button',
+    builder: (BuildContext context){
+      var theme = CustomTheme.of(context);
+      String text = context.knobs.text(label: 'Text', initial: 'Test');
+      bool active = context.knobs.boolean(label: 'Active', initial: true);
+
+      void onTap () {
+        debugPrint('Chips button pressed');
+      }
+
+      return ChipsButtonWidget.standart(theme: theme, onTap: active? onTap:null, text: text);
+    }
   );
 }
