@@ -62,3 +62,52 @@ abstract class BaseButtonWidget extends StatelessWidget {
     );
   }
 }
+
+class BigButtonWidget extends BaseButtonWidget {
+  const BigButtonWidget({
+    required super.theme,
+    required super.onTap,
+    required super.backgroundColor,
+    required super.disabledBackgroundColor,
+    required super.strokeColor,
+    required super.textColor,
+    required super.text,
+  });
+
+  @override
+  double get height => 56.h;
+
+  @override
+  EdgeInsets get padding =>
+      EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h);
+
+  @override
+  TextStyle get textStyle => theme.texts.title3Semibold17;
+
+  @override
+  double? get width => 335.w;
+}
+
+class MediumButtonWidget extends BaseButtonWidget {
+  const MediumButtonWidget({
+    required super.theme,
+    required super.onTap,
+    required super.backgroundColor,
+    required super.disabledBackgroundColor,
+    required super.strokeColor,
+    required super.textColor,
+    required super.text,
+  });
+
+  @override
+  double get height => 48.h;
+
+  @override
+  EdgeInsets get padding => EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h);
+
+  @override
+  TextStyle get textStyle => theme.texts.regular15;
+
+  @override
+  double? get width => 335.w;
+}
