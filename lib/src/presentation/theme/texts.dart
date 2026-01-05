@@ -15,11 +15,19 @@ class Texts {
     height: 24 / 17,
   );
 
-  TextStyle get regular15 => TextStyle(
+  TextStyle get textRegular15 => TextStyle(
     color: palette.black,
     fontSize: 15.sp,
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
     height: 20 / 15,
+  );
+
+  TextStyle get captionSemibold14 => TextStyle(
+    color: palette.black,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0,
+    height: 20 / 14,
   );
 }
