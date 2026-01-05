@@ -56,9 +56,7 @@ abstract class BaseButtonWidget extends StatelessWidget {
         child: Text(
           text,
           style: textStyle.copyWith(
-            color: onTap != null
-                ? textColor
-                : disabledTextColor,
+            color: onTap != null ? textColor : disabledTextColor,
             overflow: TextOverflow.ellipsis,
           ),
         ),
@@ -103,7 +101,7 @@ class BigButtonWidget extends BaseButtonWidget {
          disabledBackgroundColor: theme.palette.accentInactive,
          strokeColor: Colors.transparent,
          textColor: theme.palette.white,
-         disabledTextColor: theme.palette.white
+         disabledTextColor: theme.palette.white,
        );
 
   BigButtonWidget.outline({
@@ -116,30 +114,43 @@ class BigButtonWidget extends BaseButtonWidget {
          disabledBackgroundColor: Colors.transparent,
          strokeColor: theme.palette.accent,
          textColor: theme.palette.accent,
-         disabledTextColor: theme.palette.accentInactive
+         disabledTextColor: theme.palette.accentInactive,
        );
+
   static Story get story => Story(
     name: 'Big Button',
-    builder: (BuildContext context){
+    builder: (BuildContext context) {
       var theme = CustomTheme.of(context);
       String text = context.knobs.text(label: 'Text', initial: "test text");
-      int type = context.knobs.options(label: "Button Type", initial: 0, options: [
-        Option(label: 'Filled', value: 0),
-        Option(label: 'Outline', value: 1)
-      ]);
+      int type = context.knobs.options(
+        label: "Button Type",
+        initial: 0,
+        options: [
+          Option(label: 'Filled', value: 0),
+          Option(label: 'Outline', value: 1),
+        ],
+      );
       bool active = context.knobs.boolean(label: 'Active', initial: true);
 
-      void onTap (){
+      void onTap() {
         debugPrint('Big button pressed');
       }
 
-      switch(type){
+      switch (type) {
         case 0:
-          return BigButtonWidget.filled(theme: theme, onTap: active? onTap:null, text: text);
+          return BigButtonWidget.filled(
+            theme: theme,
+            onTap: active ? onTap : null,
+            text: text,
+          );
         case _:
-          return BigButtonWidget.outline(theme: theme, onTap: active? onTap:null, text: text);
+          return BigButtonWidget.outline(
+            theme: theme,
+            onTap: active ? onTap : null,
+            text: text,
+          );
       }
-    }
+    },
   );
 }
 
@@ -179,7 +190,7 @@ class MediumButtonWidget extends BaseButtonWidget {
          disabledBackgroundColor: theme.palette.accentInactive,
          strokeColor: Colors.transparent,
          textColor: theme.palette.white,
-         disabledTextColor: theme.palette.white
+         disabledTextColor: theme.palette.white,
        );
 
   MediumButtonWidget.outline({
@@ -192,7 +203,7 @@ class MediumButtonWidget extends BaseButtonWidget {
          disabledBackgroundColor: Colors.transparent,
          strokeColor: theme.palette.accent,
          textColor: theme.palette.accent,
-         disabledTextColor: theme.palette.accentInactive
+         disabledTextColor: theme.palette.accentInactive,
        );
 
   MediumButtonWidget.simple({
@@ -210,29 +221,45 @@ class MediumButtonWidget extends BaseButtonWidget {
 
   static Story get story => Story(
     name: 'Medium button',
-    builder: (BuildContext context){
+    builder: (BuildContext context) {
       var theme = CustomTheme.of(context);
       String text = context.knobs.text(label: 'Text', initial: 'Test text');
-      int type = context.knobs.options(label: 'Type', initial: 0, options: [
-        Option(label: 'Filled', value: 0),
-        Option(label: 'Outline', value: 1),
-        Option(label: 'Simple', value: 2),
-      ]);
+      int type = context.knobs.options(
+        label: 'Type',
+        initial: 0,
+        options: [
+          Option(label: 'Filled', value: 0),
+          Option(label: 'Outline', value: 1),
+          Option(label: 'Simple', value: 2),
+        ],
+      );
       bool active = context.knobs.boolean(label: 'Active', initial: true);
 
-      void onTap (){
+      void onTap() {
         debugPrint('Medium button pressed');
       }
 
-      switch(type){
+      switch (type) {
         case 0:
-          return MediumButtonWidget.filled(theme: theme, onTap: active? onTap:null, text: text);
+          return MediumButtonWidget.filled(
+            theme: theme,
+            onTap: active ? onTap : null,
+            text: text,
+          );
         case 1:
-          return MediumButtonWidget.outline(theme: theme, onTap: active? onTap:null, text: text);
+          return MediumButtonWidget.outline(
+            theme: theme,
+            onTap: active ? onTap : null,
+            text: text,
+          );
         case _:
-          return MediumButtonWidget.simple(theme: theme, onTap: active? onTap:null, text: text);
+          return MediumButtonWidget.simple(
+            theme: theme,
+            onTap: active ? onTap : null,
+            text: text,
+          );
       }
-    }
+    },
   );
 }
 
@@ -268,12 +295,12 @@ class SmallButtonWidget extends BaseButtonWidget {
     required super.onTap,
     required super.text,
   }) : super(
-    backgroundColor: theme.palette.accent,
-    disabledBackgroundColor: theme.palette.accentInactive,
-    strokeColor: Colors.transparent,
-    textColor: theme.palette.white,
-    disabledTextColor: theme.palette.white
-  );
+         backgroundColor: theme.palette.accent,
+         disabledBackgroundColor: theme.palette.accentInactive,
+         strokeColor: Colors.transparent,
+         textColor: theme.palette.white,
+         disabledTextColor: theme.palette.white,
+       );
 
   SmallButtonWidget.outline({
     super.key,
@@ -281,35 +308,47 @@ class SmallButtonWidget extends BaseButtonWidget {
     required super.onTap,
     required super.text,
   }) : super(
-    backgroundColor: Colors.transparent,
-    disabledBackgroundColor: Colors.transparent,
-    strokeColor: theme.palette.accent,
-    textColor: theme.palette.accent,
-    disabledTextColor: theme.palette.accentInactive
-  );
+         backgroundColor: Colors.transparent,
+         disabledBackgroundColor: Colors.transparent,
+         strokeColor: theme.palette.accent,
+         textColor: theme.palette.accent,
+         disabledTextColor: theme.palette.accentInactive,
+       );
 
   static Story get story => Story(
-      name: 'Small Button',
-      builder: (BuildContext context){
-        var theme = CustomTheme.of(context);
-        String text = context.knobs.text(label: 'Text', initial: "test");
-        int type = context.knobs.options(label: "Button Type", initial: 0, options: [
+    name: 'Small Button',
+    builder: (BuildContext context) {
+      var theme = CustomTheme.of(context);
+      String text = context.knobs.text(label: 'Text', initial: "test");
+      int type = context.knobs.options(
+        label: "Button Type",
+        initial: 0,
+        options: [
           Option(label: 'Filled', value: 0),
-          Option(label: 'Outline', value: 1)
-        ]);
-        bool active = context.knobs.boolean(label: 'Active', initial: true);
+          Option(label: 'Outline', value: 1),
+        ],
+      );
+      bool active = context.knobs.boolean(label: 'Active', initial: true);
 
-        void onTap (){
-          debugPrint('Small button pressed');
-        }
-
-        switch(type){
-          case 0:
-            return SmallButtonWidget.filled(theme: theme, onTap: active? onTap:null, text: text);
-          case _:
-            return SmallButtonWidget.outline(theme: theme, onTap: active? onTap:null, text: text);
-        }
+      void onTap() {
+        debugPrint('Small button pressed');
       }
+
+      switch (type) {
+        case 0:
+          return SmallButtonWidget.filled(
+            theme: theme,
+            onTap: active ? onTap : null,
+            text: text,
+          );
+        case _:
+          return SmallButtonWidget.outline(
+            theme: theme,
+            onTap: active ? onTap : null,
+            text: text,
+          );
+      }
+    },
   );
 }
 
@@ -345,25 +384,29 @@ class ChipsButtonWidget extends BaseButtonWidget {
     required super.onTap,
     required super.text,
   }) : super(
-    backgroundColor: theme.palette.accent,
-    disabledBackgroundColor: Colors.transparent,
-    strokeColor: Colors.transparent,
-    textColor: theme.palette.white,
-    disabledTextColor: theme.palette.description,
-  );
+         backgroundColor: theme.palette.accent,
+         disabledBackgroundColor: Colors.transparent,
+         strokeColor: Colors.transparent,
+         textColor: theme.palette.white,
+         disabledTextColor: theme.palette.description,
+       );
 
   static Story get story => Story(
     name: 'Chips button',
-    builder: (BuildContext context){
+    builder: (BuildContext context) {
       var theme = CustomTheme.of(context);
       String text = context.knobs.text(label: 'Text', initial: 'Test');
       bool active = context.knobs.boolean(label: 'Active', initial: true);
 
-      void onTap () {
+      void onTap() {
         debugPrint('Chips button pressed');
       }
 
-      return ChipsButtonWidget.standart(theme: theme, onTap: active? onTap:null, text: text);
-    }
+      return ChipsButtonWidget.standart(
+        theme: theme,
+        onTap: active ? onTap : null,
+        text: text,
+      );
+    },
   );
 }

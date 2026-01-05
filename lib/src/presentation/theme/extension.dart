@@ -20,5 +20,6 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
     return this;
   }
 
-  static CustomTheme of(BuildContext context) => Theme.of(context).extension<CustomTheme>()!;
+  static CustomTheme of(BuildContext context) =>
+      Theme.of(context).extension<CustomTheme>()!;
 }
