@@ -46,9 +46,8 @@ abstract class BaseButtonWidget extends StatelessWidget {
         onPressed: onTap,
         style: FilledButton.styleFrom(
           padding: padding,
-          backgroundColor: onTap != null
-              ? backgroundColor
-              : disabledBackgroundColor,
+          backgroundColor: backgroundColor,
+          disabledBackgroundColor: disabledBackgroundColor,
           shape: RoundedRectangleBorder(
             side: BorderSide(color: strokeColor, width: 1.w),
             borderRadius: BorderRadiusGeometry.circular(10.w),
@@ -136,9 +135,9 @@ class BigButtonWidget extends BaseButtonWidget {
 
       switch(type){
         case 0:
-          return BigButtonWidget.filled(theme: theme, onTap: active ? onTap : null, text: text);
+          return BigButtonWidget.filled(theme: theme, onTap: active? onTap:null, text: text);
         case _:
-          return BigButtonWidget.outline(theme: theme, onTap: active ? onTap : null, text: text);
+          return BigButtonWidget.outline(theme: theme, onTap: active? onTap:null, text: text);
       }
     }
   );
@@ -208,6 +207,33 @@ class MediumButtonWidget extends BaseButtonWidget {
          textColor: theme.palette.black,
          disabledTextColor: theme.palette.description,
        );
+
+  static Story get story => Story(
+    name: 'Medium button',
+    builder: (BuildContext context){
+      var theme = CustomTheme.of(context);
+      String text = context.knobs.text(label: 'Text', initial: 'Test text');
+      int type = context.knobs.options(label: 'Type', initial: 0, options: [
+        Option(label: 'Filled', value: 0),
+        Option(label: 'Outline', value: 1),
+        Option(label: 'Simple', value: 2),
+      ]);
+      bool active = context.knobs.boolean(label: 'Active', initial: true);
+
+      void onTap (){
+        debugPrint('Medium button pressed');
+      }
+
+      switch(type){
+        case 0:
+          return MediumButtonWidget.filled(theme: theme, onTap: active? onTap:null, text: text);
+        case 1:
+          return MediumButtonWidget.outline(theme: theme, onTap: active? onTap:null, text: text);
+        case _:
+          return MediumButtonWidget.simple(theme: theme, onTap: active? onTap:null, text: text);
+      }
+    }
+  );
 }
 
 class SmallButtonWidget extends BaseButtonWidget {
