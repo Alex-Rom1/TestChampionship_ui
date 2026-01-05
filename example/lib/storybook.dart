@@ -8,7 +8,9 @@ class StoryBookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Storybook(
-      stories: [],
+      stories: [
+        BigButtonWidget.story,
+      ],
       wrapperBuilder: (BuildContext context, Widget? widget) =>
           MaterialAppWrapper(widget: widget),
     );
